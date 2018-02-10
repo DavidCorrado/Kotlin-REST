@@ -11,8 +11,8 @@ class Task() {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Int? = 0
-    lateinit var name: String
-    lateinit var detail: String
+    var name: String = ""
+    var detail: String = ""
 
     constructor(name: String, detail: String) : this() {
         this.name = name
