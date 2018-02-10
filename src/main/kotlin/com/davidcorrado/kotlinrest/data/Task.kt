@@ -10,7 +10,7 @@ class Task() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Int? = 0
+    val id: Long? = 0
     var name: String = ""
     var detail: String = ""
 
