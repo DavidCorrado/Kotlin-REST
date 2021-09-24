@@ -20,6 +20,7 @@ dependencies {
 
     //Spring Boot
     implementation("org.springframework.boot:spring-boot-starter:${Versions.springBoot}")
+    implementation("org.springframework.boot:spring-boot-starter-web:${Versions.springBoot}")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:${Versions.springBoot}")
 
     //Kotlin
