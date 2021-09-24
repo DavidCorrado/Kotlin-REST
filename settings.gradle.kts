@@ -1,1 +1,1 @@
-rootProject.name = "kotlinrest"
+rootProject.name = "Kotlin-Rest"

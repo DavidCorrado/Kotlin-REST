@@ -11,7 +11,6 @@ import org.springframework.web.client.HttpClientErrorException
 @RestController
 @RequestMapping( "/api/v1/tasks")
 class TaskController {
-
     @Autowired lateinit var taskRepo: TaskRepository
 
     @GetMapping()
@@ -21,8 +20,8 @@ class TaskController {
 
     @GetMapping("/{id}")
     fun getByID(@PathVariable id: Long): Task {
-        if(taskRepo.exists(id)) {
-            return taskRepo.findOne(id)
+        if(taskRepo.existsById(id)) {
+            return taskRepo.findById(id).get()
         } else {
             throw HttpClientErrorException(HttpStatus.NOT_FOUND,"Task not found.")
         }
@@ -40,8 +39,8 @@ class TaskController {
 
     @DeleteMapping("/{id}")
     fun deleteByID(@PathVariable id: Long) {
-        if(taskRepo.exists(id)) {
-            taskRepo.delete(id)
+        if(taskRepo.existsById(id)) {
+            taskRepo.deleteById(id)
         }
     }
 }
