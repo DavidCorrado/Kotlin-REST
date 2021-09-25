@@ -3,7 +3,6 @@ package com.davidcorrado.kotlinrest.controller
 import com.davidcorrado.kotlinrest.data.Task
 import com.davidcorrado.kotlinrest.data.TaskRepository
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.data.crossstore.ChangeSetPersister
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.client.HttpClientErrorException
@@ -13,7 +12,7 @@ import org.springframework.web.client.HttpClientErrorException
 class TaskController {
     @Autowired lateinit var taskRepo: TaskRepository
 
-    @GetMapping()
+    @GetMapping
     fun getAll(): Iterable<Task> {
         return taskRepo.findAll()
     }
@@ -27,12 +26,12 @@ class TaskController {
         }
     }
 
-    @PostMapping()
+    @PostMapping
     fun save(@RequestBody task: Task): Task {
         return taskRepo.save(task)
     }
 
-    @DeleteMapping()
+    @DeleteMapping
     fun deleteAll() {
         taskRepo.deleteAll()
     }
@@ -41,6 +40,8 @@ class TaskController {
     fun deleteByID(@PathVariable id: Long) {
         if(taskRepo.existsById(id)) {
             taskRepo.deleteById(id)
+        } else {
+            throw HttpClientErrorException(HttpStatus.NOT_FOUND,"Task not found.")
         }
     }
 }
