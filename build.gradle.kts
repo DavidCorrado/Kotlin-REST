@@ -47,8 +47,8 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-tasks.withType<Jar> {
-    manifest {
-        attributes["Main-Class"] = "com.davidcorrado.kotlinrest.KotlinRestApplicationKt"
-    }
-}
+//tasks.withType<Jar> {
+//    manifest {
+//        attributes["Main-Class"] = "com.davidcorrado.kotlinrest.KotlinRestApplicationKt"
+//    }
+//}
